@@ -1,38 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  padding: 2rem 2rem;
-  margin: 0 1rem;
-}
-.header > div {
-  position: relative;
-  cursor: pointer;
-}
-.header > div img {
-  height: 3rem;
-  aspect-ratio: 1/1;
-}
-.header > div .count-in-cart {
-  display: inline-block;
-  height: 1.8rem;
-  width: 1.8rem;
-  background-color: rgb(9, 9, 9);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: -20px;
-  right: 0;
-}
-
 .main {
   margin-top: 2rem;
   display: flex;
@@ -64,11 +29,11 @@
   border: none;
   border-radius: 0.2rem;
   cursor: pointer;
+  display: none;
 }
 .main .card .description .plus-minus-btn {
   display: flex;
   gap: 5px;
-  display: none;
 }
 .main .card .description .plus-minus-btn > button {
   display: flex;
@@ -83,4 +48,4 @@
 .main img {
   width: 13rem;
   aspect-ratio: 4/3;
-}/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=cart.css.map */

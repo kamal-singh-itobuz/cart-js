@@ -1,39 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    padding: 2rem 2rem;
-    margin: 0 1rem;
-    >div{
-        position: relative;
-        cursor: pointer;
-        img {
-            height: 3rem;
-            aspect-ratio: 1/1;
-        }
-        .count-in-cart {
-            display: inline-block;
-            height: 1.8rem;
-            width: 1.8rem;
-            background-color: rgb(9, 9, 9);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: absolute;
-            top: -20px;
-            right: 0;
-        }
-    }
-    
-}
-
 .main {
     margin-top: 2rem;
     display: flex;
@@ -64,6 +28,7 @@
                 border: none;
                 border-radius: 0.2rem;
                 cursor: pointer;
+                display: none;
             }
             .plus-minus-btn {
                 display: flex;
@@ -78,7 +43,6 @@
                     background-color: red;
                     border-radius: 0.2rem;
                 }
-                display: none;
             }
         }
     }
