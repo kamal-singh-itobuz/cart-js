@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8rem 2rem;
+}
+.header > img {
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: 2rem;
+}
+.main img {
+  height: 15rem;
+  aspect-ratio: 4/3;
+}
+
+@media (min-width: 576px) {
+  .main {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}
+@media (min-width: 1200px) {
+  .main {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}/*# sourceMappingURL=style.css.map */
