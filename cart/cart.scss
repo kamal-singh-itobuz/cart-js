@@ -1,3 +1,9 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
 .header {
     margin: 2rem 0;
     display: flex;
@@ -36,6 +42,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            gap: 1rem;
+            margin-top: 0.4rem;
     
             >.add-cart-btn {
                 color: white;
@@ -66,5 +74,22 @@
     img {
         width: 13rem;
         aspect-ratio: 4/3;
+    }
+}
+
+.total-amount-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    >button {
+        background-color: black;
+        color: white;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 0.3rem;
+        cursor: pointer;
     }
 }

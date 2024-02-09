@@ -8,12 +8,10 @@ homeLink.setAttribute('href', '../index.html');
 homeLink.innerText = "Home";
 header.appendChild(homeLink);
 
-
 function qtyProduct(ind) {
     data = JSON.parse(localStorage.getItem('fav') || '[]');
     return data[ind].quantity;
 }
-
 
 function emptyCart() {
     let emptyDiv = document.createElement("div");
@@ -25,12 +23,6 @@ function emptyCart() {
     emptyDiv.appendChild(para);
     emptyDiv.appendChild(homeLink);
     content.appendChild(emptyDiv);
-}
-
-
-if (size === 0) {
-    totalAmountSection.style.display = "none";
-    emptyCart();
 }
 
 for (let i = 0; i < size; i++) {
@@ -81,15 +73,13 @@ for (let i = 0; i < size; i++) {
 
     cardInnerDiv.appendChild(descpDiv);
     cardDiv.appendChild(cardInnerDiv);
-
-
     content.appendChild(cardDiv);
 }
 
 function totalMoney() {
     let ans = 0;
     data.forEach(element => {
-        ans += element.price;
+        ans += (element.price * element.quantity);
     });
     return ans;
 }
@@ -106,9 +96,14 @@ totalAmountSection.appendChild(totalAmountText);
 
 totalAmountBtn.addEventListener('click', () => {
     let amount = totalMoney();
+    totalAmount.style.display = "inline-block";
     totalAmount.innerText = amount;
 });
 
+if (size === 0) {
+    totalAmountSection.style.display = "none";
+    emptyCart();
+}
 
 const card = document.getElementsByClassName("card");
 const plusBtn = document.getElementsByClassName("plus-btn");
@@ -116,16 +111,13 @@ const minusBtn = document.getElementsByClassName("minus-btn");
 const counter = document.getElementsByClassName("counter");
 const price = document.getElementsByClassName("price");
 
-
 function addToLocalStorage(ind) {
     data = JSON.parse(localStorage.getItem('fav') || '[]');
     let indToUpdate = ind;
     let qty = data[indToUpdate].quantity + 1;
     data[indToUpdate].quantity = qty;
-    counter[ind].innerText = qty;
-    let pricePerPeice = Number(price[ind].innerText)/(qty-1);
-    price[ind].innerText = Number(price[ind].innerText) + pricePerPeice;
-    data[indToUpdate].price = Number(price[ind].innerText);
+    counter[indToUpdate].innerText = qty;
+    price[ind].innerText = data[ind].price * qty;
     let stringified = JSON.stringify(data);
     localStorage.setItem("fav", stringified);
 }
@@ -140,11 +132,8 @@ function deleteFromLocalStorage(ind) {
     else {
         data[indToDelete].quantity = qty;
         counter[ind].innerText = qty;
-        let pricePerPeice = Number(price[ind].innerText)/(qty+1);
-        price[ind].innerText = Number(price[ind].innerText) - pricePerPeice;
-        data[indToDelete].price = Number(price[ind].innerText);
+        price[ind].innerText = data[ind].price * qty;
     }
-    
     size = data.length;
     if (size === 0) {
         totalAmountSection.style.display = "none";
@@ -156,9 +145,11 @@ function deleteFromLocalStorage(ind) {
 
 for (let i = 0; i < size; i++) {
     plusBtn[i].addEventListener('click', () => {
+        totalAmount.style.display = "none";
         addToLocalStorage(i);
     })
     minusBtn[i].addEventListener('click', () => {
+        totalAmount.style.display = "none";
         deleteFromLocalStorage(i);
     })
 }
